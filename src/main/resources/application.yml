@@ -1,0 +1,32 @@
+#spring.datasource.url=jdbc:postgresql://localhost:5432/weather?useSSL=false
+#spring.datasource.username=root
+#spring.datasource.password=pawel
+
+spring:
+  jpa:
+    generate-ddl: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  main:
+    allow-bean-definition-overriding: true
+  flyway:
+    locations: "classpath:db/migration"
+
+app:
+  datasource:
+    main:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/weather
+      username: postgres
+      password: 'password'
+      pool-size: 30
+
+weather:
+  api:
+    url:  "https://archive-api.open-meteo.com/v1/archive"
+
+server:
+  error:
+    include-binding-errors: always
+    include-message: always

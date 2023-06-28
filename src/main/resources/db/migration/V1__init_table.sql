@@ -1,3 +1,5 @@
+CREATE SCHEMA IF NOT EXISTS pub;
+
 CREATE TABLE pub.weather_request
 (
     id              SERIAL PRIMARY KEY,

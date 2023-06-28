@@ -1,18 +1,29 @@
 version: '3'
 
 services:
-  db:
-    image: 'postgres'
-    restart: always
-    ports:
-      - "5432:5432"
-    container_name: db
+  postgres:
+    image: postgres
+    container_name: postgres
     environment:
       POSTGRES_DB: weather
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: always
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
 #  app:
-#    build: .
+  #    build: .
 #    ports:
 #      - "9000:8080"
 #    environment:
